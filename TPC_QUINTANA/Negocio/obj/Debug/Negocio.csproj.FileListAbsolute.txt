@@ -1,0 +1,9 @@
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\bin\Debug\Negocio.dll
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\bin\Debug\Negocio.pdb
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\bin\Debug\Dominio.dll
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\bin\Debug\Dominio.pdb
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\obj\Debug\Negocio.dll
+D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Negocio\obj\Debug\Negocio.pdb
