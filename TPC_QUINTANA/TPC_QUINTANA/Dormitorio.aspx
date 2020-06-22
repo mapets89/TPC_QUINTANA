@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dormitorio.aspx.cs" Inherits="TPC_QUINTANA.Dormitorio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dormitorio.aspx.cs" Inherits="TPC_QUINTANA.Dormitorio" EnableEventValidation="false" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="DormitorioContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         .carousel-custom {
             margin-top: 90px;
@@ -29,9 +29,14 @@
             font-family: Lakki;
             font-size: 25px;
         }
+
         .cardCustom {
             max-height: 100px;
             min-height: 100px;
+        }
+        .boton-add{
+            margin-top:0px;
+            margin-left:30%;
         }
 
         @font-face {
@@ -58,45 +63,45 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <asp:Label runat="server" Text="PRODUCTOS <br/> DESTACADOS" CssClass="productos-destacados"></asp:Label>
-                <asp:Image runat="server" ImageUrl="~/images/carrousel_dormitorio_1.jpg" CssClass="item-carousel d-block" alt="..." />
+                <asp:Image ID="imageCarousel1" runat="server" ImageUrl="~/images/carrousel_dormitorio_1.jpg" CssClass="item-carousel d-block" alt="..." />
                 <div style="position: absolute; top: 0; right: 15px;">
-                    <asp:Label runat="server" ID="Label7" Text="Nombre del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="nombreCarousel1" runat="server" Text="Nombre del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
 
                 <div style="position: absolute; margin-top: 40px; right: 15px;">
-                    <asp:Label runat="server" ID="Label8" Text="Descripcion del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="descripCarousel1" runat="server" Text="Descripcion del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
                 <div style="position: absolute; bottom: 0; right: 15px;">
-                    <asp:Label runat="server" ID="Label9" Text="Precio del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="precioCarousel1" runat="server" Text="Precio del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
 
             </div>
             <div class="carousel-item">
                 <asp:Label runat="server" Text="PRODUCTOS <br/> DESTACADOS" CssClass="productos-destacados"></asp:Label>
-                <asp:Image runat="server" ImageUrl="~/images/carrousel_dormitorio_2.jpg" CssClass="item-carousel d-block" alt="..." />
+                <asp:Image runat="server" ID="imageCarousel2" ImageUrl="~/images/carrousel_dormitorio_2.jpg" CssClass="item-carousel d-block" alt="..." />
                 <div style="position: absolute; top: 0; right: 15px;">
-                    <asp:Label runat="server" ID="Label1" Text="Nombre del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="nombreCarousel2" runat="server" Text="Nombre del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
 
                 <div style="position: absolute; margin-top: 40px; right: 15px;">
-                    <asp:Label runat="server" ID="Label2" Text="Descripcion del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="descripCarousel2" runat="server" Text="Descripcion del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
                 <div style="position: absolute; bottom: 0; right: 15px;">
-                    <asp:Label runat="server" ID="Label3" Text="Precio del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="precioCarousel2" runat="server" Text="Precio del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
             </div>
             <div class="carousel-item">
                 <asp:Label runat="server" Text="PRODUCTOS <br/> DESTACADOS" CssClass="productos-destacados"></asp:Label>
-                <asp:Image runat="server" ImageUrl="~/images/carrousel_dormitorio_3.jpg" CssClass="item-carousel d-block" />
+                <asp:Image runat="server" ID="imageCarousel3" ImageUrl="~/images/carrousel_dormitorio_3.jpg" CssClass="item-carousel d-block" />
                 <div style="position: absolute; top: 0; right: 15px;">
-                    <asp:Label runat="server" ID="Label4" Text="Nombre del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="nombreCarousel3" runat="server" Text="Nombre del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
 
                 <div style="position: absolute; margin-top: 40px; right: 15px;">
-                    <asp:Label runat="server" ID="Label5" Text="Descripcion del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="descripCarousel3" runat="server" Text="Descripcion del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
                 <div style="position: absolute; bottom: 0; right: 15px;">
-                    <asp:Label runat="server" ID="Label6" Text="Precio del producto" CssClass="detalle-producto-destacado"></asp:Label>
+                    <asp:Label ID="precioCarousel3" runat="server" Text="Precio del producto" CssClass="detalle-producto-destacado"></asp:Label>
                 </div>
             </div>
         </div>
@@ -117,18 +122,20 @@
                 <div class="card mb-4" style="max-width: 540px;">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="<%#Eval("Imagen")%>" class="card-img cardCustom" alt="...">
+                            <img src="<%#Eval("imagen")%>" class="card-img cardCustom" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><%#Eval("Nombre")%></h5>
-                                <p class="card-text"><%#Eval("Descripcion")%></p>
-                                <p class="card-text"><small class="text-muted">$ <%#Eval("Precio")%></small></p>
+                                <h5 class="card-title"><%#Eval("nombre")%></h5>
+                                <p class="card-text"><%#Eval("descripcion")%></p>
+                                <p class="card-text"><small class="text-muted">$ <%#Eval("precio")%></small></p>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="mt-0">
+                    <asp:Button CssClass="btn btn-toolbar boton-add" ID="addCarrito" Text="Añadir al Carrito" runat="server" CommandArgument='<%#Eval("Id")%>' OnCommand="addCarrito_Command" />
+                </div>
             </ItemTemplate>
         </asp:Repeater>
     </div>

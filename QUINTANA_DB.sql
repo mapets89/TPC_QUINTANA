@@ -76,8 +76,6 @@ GO
 ALTER TABLE ARTICULOS
 ADD CONSTRAINT FK_ORIGEN FOREIGN KEY(IDORIGEN) REFERENCES PAISES(ID)
 
--- SELECT a.ID, A.CODIGO, a.NOMBRE, a.DESCRIPCION, a.EXISTENCIA, a.IMAGEN, a.PRECIO, a.CANTIDAD, m.NOMBRE as nombreMarca, m.ID as idMarca, c.NOMBRE as nombreDesc, c.ID as idCat, p.NOMBRE as paisOrig, p.ID as idOrig FROM Articulos as A INNER JOIN MARCAS as M on m.ID = a.IDMARCA INNER JOIN Categorias as C on C.ID = a.IDCATEGORIA INNER JOIN PAISES AS P ON P.ID = A.IDORIGEN
-
 insert into MARCAS values ('Arredo'), ('Arcoiris'), ('Livanlito'), ('Delta'), ('Sama')
 insert into CATEGORIAS values ('Blanqueria'),('Muebles'), ('Lamparas'), ('Alfombras'), ('Orden')
 insert into PROVEEDORES VALUES ('Pepe', 'Alto proveedor', 'su casa')
@@ -87,4 +85,48 @@ INSERT INTO PAISES VALUES('Argentina')
 insert into ARTICULOS values ('S001', 'Sabanas Animal Print', 'Tela de 180 hilos', 1, 2, 1, 2750, 1, 1,1,'https://http2.mlstatic.com/juego-sabanas-2-12-plazas-animal-print-euro-percal-oregon-D_NQ_NP_774916-MLA27680795517_072018-F.jpg')
 insert into ARTICULOS values ('MPH007', 'Estante flotante', 'Madera lacada', 2, 3, 2, 60050, 1, 1,1,'https://http2.mlstatic.com/estantes-repisas-flotantes-todas-las-medidas-lemensiedeco-D_NQ_NP_662276-MLA31016626802_062019-F.jpg')
 insert into ARTICULOS values ('APB003', 'Alfombra para Baño', 'Absorbe el agua', 4, 4, 2, 1050, 1, 1,1,'https://d26lpennugtm8s.cloudfront.net/stores/501/942/products/633415-mla25233543771_122016-o-4c37a0f1a267e3d63915133075006902-640-0.jpg')
+insert into ARTICULOS values ('APD023', 'Alfombra', 'Alfombra de piel natural', 4, 4, 2, 23000, 1, 1,1,'https://d26lpennugtm8s.cloudfront.net/stores/450/368/products/dsc_34741-fa37a7dd71d3f7854d15294507805658-640-0.jpg')
 select * from ARTICULOS
+
+USE ENCASA
+GO
+CREATE PROCEDURE SP_LISTAR_ARTICULOS
+AS
+SELECT a.ID, A.CODIGO, a.NOMBRE, a.DESCRIPCION, a.EXISTENCIA, a.IMAGEN, a.PRECIO, a.CANTIDAD,
+m.NOMBRE as nombreMarca, m.ID as idMarca, c.NOMBRE as nombreCat, c.ID as idCat, p.NOMBRE as paisOrig, p.ID 
+as idOrig FROM Articulos as A INNER JOIN MARCAS as M on m.ID = a.IDMARCA INNER JOIN Categorias as C on 
+C.ID = a.IDCATEGORIA INNER JOIN PAISES AS P ON P.ID = A.IDORIGEN
+Go
+CREATE PROCEDURE SP_AGREGAR
+@Codigo VARCHAR(25),
+@Nombre VARCHAR(50),
+@Descripcion VARCHAR(150),
+@IdCategoria INT,
+@IdMarca INT,
+@IdProveedor INT,
+@Precio MONEY,
+@Cantidad INT,
+@IdOrigen INT,
+@Imagen VARCHAR(200)
+AS 
+insert into ARTICULOS (Codigo, NOMBRE, DESCRIPCION, IDCATEGORIA, IDMARCA, IDPROVEEDOR, PRECIO, CANTIDAD, IDORIGEN, IMAGEN)
+values (@Codigo, @Nombre,@Descripcion , @IdCategoria, @IdMarca, @IdProveedor, @Precio, @Cantidad, @IdOrigen, @Imagen)
+Go
+
+CREATE PROCEDURE SP_LISTAR_MARCAS
+AS
+SELECT M.ID, M.NOMBRE as nombreMarca FROM MARCAS AS M
+
+CREATE PROCEDURE SP_LISTAR_PROVEEDORES
+AS
+SELECT P.ID, P.NOMBRE AS nombreProveedor, P.DESCRIPCION AS descripcionProveedor, P.DIRECCION AS direccionProveedor FROM PROVEEDORES AS P
+
+CREATE PROCEDURE SP_LISTAR_CATEGORIAS
+AS
+SELECT C.ID, C.NOMBRE AS nombreCategoria FROM CATEGORIAS AS C
+
+CREATE PROCEDURE SP_LISTAR_PAISES
+AS
+SELECT PA.ID, PA.NOMBRE AS nombrePais FROM PAISES AS PA
+
+exec SP_LISTAR_PROVEEDORES  

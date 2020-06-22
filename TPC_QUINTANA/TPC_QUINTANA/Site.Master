@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 <html lang="es">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <head runat="server">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,7 +59,14 @@
                 margin-left: 20px;
                 margin-right: 20px;
             }
+             .margen-top-icon{
 
+                    margin-top:2.3rem;
+             }
+             .margen-top-cant{
+                 margin-top:2rem;
+                 font-family:Federicka;
+             }
 
             .text-logo {
                 font-family: Monoton;
@@ -86,7 +93,7 @@
                 <div class="navbar-header">
                     <div class="navbar-header">
                         <a class="navbar-brand">
-                            <asp:Image CssClass="icon" runat="server" ImageUrl="~/images/ic_logo.png"/>
+                            <asp:Image CssClass="icon" runat="server" ImageUrl="~/images/ic_logo.png" />
                         </a>
                     </div>
                     <a class="navbar-brand text-logo" runat="server" href="home">EN CASA</a>
@@ -97,25 +104,28 @@
                         <li><a runat="server" class="text-nav" href="~/Dormitorio">Dormitorio</a></li>
                         <li><a runat="server" class="text-nav" href="~/Contact">Cocina</a></li>
                         <li><a runat="server" class="text-nav" href="~/Contact">Baño</a></li>
+                        <li><a class="text-nav" runat="server" href="~/Carrito">Carrito</a></li>
+                        <li><asp:Image CssClass="margen-top-icon" runat="server" ImageUrl="~/images/addCarroCompras.png" Height="25px" Width="25px" BackColor="Transparent"/></li>
+                        <li><asp:Label CssClass="margen-top-cant mr-1 ml-2 text-black" runat="server" ID="CantCarrito" Font-Bold="true" Width="15px" Height="15px" Font-Size="14px" /></li>
                     </ul>
                 </div>
             </div>
-            <form class="form-inline" style="margin-top: 20px">
+            <div class="form-inline" style="margin-top: 20px">
                 <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0 text-black-50" type="submit">Buscar</button>
-            </form>
+            </div>
         </div>
         <div style="background-color: #EDFDFF;">
-                  <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
-            </footer>
-        </div>
-
+            <div class="container body-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+                <hr />
+                <footer>
+                    <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                </footer>
             </div>
+
+        </div>
     </form>
 
 </body>

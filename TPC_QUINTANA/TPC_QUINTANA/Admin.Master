@@ -1,0 +1,348 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="TPC_QUINTANA.Admin" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <style>
+            .icon {
+                margin-top: 0px;
+                margin-left: 0px;
+                width: 80px;
+                height: 38px;
+                background-color: transparent;
+            }
+
+            .text-nav {
+                margin-top: 15px;
+                font-family: Federicka;
+                font-size: 23px;
+                color: black;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .margen-top-icon {
+                margin-top: 2.3rem;
+            }
+
+            .margen-top-cant {
+                margin-top: 2rem;
+                font-family: Federicka;
+            }
+
+            .text-logo {
+                font-family: Monoton;
+                font-size: 30px;
+                margin-top: 15px;
+            }
+
+            @font-face {
+                font-family: 'Monoton';
+                src: url(fonts/Monoton-Regular.ttf);
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Federicka';
+                src: url(fonts/FrederickatheGreat-Regular.ttf);
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: #fafafa;
+            }
+
+            p {
+                font-family: 'Poppins', sans-serif;
+                font-size: 1.1em;
+                font-weight: 300;
+                line-height: 1.7em;
+                color: #999;
+            }
+
+            a,
+            a:hover,
+            a:focus {
+                color: inherit;
+                text-decoration: none;
+                transition: all 0.3s;
+            }
+
+            .navbar {
+                background: #fff;
+                border: none;
+                border-radius: 0;
+                margin-bottom: 40px;
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+                width:100%;
+            }
+
+            .navbar-btn {
+                box-shadow: none;
+                outline: none !important;
+                border: none;
+            }
+
+            .line {
+                width: 100%;
+                height: 1px;
+                border-bottom: 1px dashed #ddd;
+                margin: 40px 0;
+            }
+
+            /* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+            .wrapper {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                align-items: stretch;
+                overflow:auto;
+            }
+
+            #sidebar {
+                min-width: 250px;
+                max-width: 250px;
+                background: #7386D5;
+                color: #fff;
+                transition: all 0.3s;
+            }
+
+                #sidebar.active {
+                    margin-left: -250px;
+                }
+
+                #sidebar .sidebar-header {
+                    padding: 20px;
+                    background: #6d7fcc;
+                }
+
+                #sidebar ul.components {
+                    padding: 20px 0;
+                    border-bottom: 1px solid #47748b;
+                }
+
+                #sidebar ul p {
+                    color: #fff;
+                    padding: 10px;
+                }
+
+                #sidebar ul li a {
+                    padding: 10px;
+                    font-size: 1.1em;
+                    display: block;
+                }
+
+                    #sidebar ul li a:hover {
+                        color: #7386D5;
+                        background: #fff;
+                    }
+
+                #sidebar ul li.active > a,
+                a[aria-expanded="true"] {
+                    color: #fff;
+                    background: #6d7fcc;
+                }
+
+            a[data-toggle="collapse"] {
+                position: relative;
+            }
+
+            .dropdown-toggle::after {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+            }
+
+            ul ul a {
+                font-size: 0.9em !important;
+                padding-left: 30px !important;
+                background: #6d7fcc;
+            }
+
+            ul.CTAs {
+                padding: 20px;
+            }
+
+                ul.CTAs a {
+                    text-align: center;
+                    font-size: 0.9em !important;
+                    display: block;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                }
+
+            a.download {
+                background: #fff;
+                color: #7386D5;
+            }
+
+            a.article,
+            a.article:hover {
+                background: #6d7fcc !important;
+                color: #fff !important;
+            }
+
+            /* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+            #content {
+                width: 100%;
+                padding: 20px;
+                min-height: 100vh;
+                transition: all 0.3s;
+            }
+
+            /* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+            @media (max-width: 768px) {
+                #sidebar {
+                    margin-left: -250px;
+                }
+
+                    #sidebar.active {
+                        margin-left: 0;
+                    }
+
+                #sidebarCollapse span {
+                    display: none;
+                }
+            }
+        </style>
+        <%-- <div class="navbar-expand-lg navbar navbar-light navbar-fixed-top" style="background-color: #DCFBFF;">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="navbar-header">
+                        <a class="navbar-brand">
+                            <asp:Image CssClass="icon" runat="server" ImageUrl="~/images/ic_logo.png" />
+                        </a>
+                    </div>
+                    <a class="navbar-brand text-logo" runat="server" href="home">EN CASA</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" class="text-nav" href="~/">Living</a></li>
+                        <li><a runat="server" class="text-nav" href="~/Dormitorio">Dormitorio</a></li>
+                        <li><a runat="server" class="text-nav" href="~/Contact">Cocina</a></li>
+                        <li><a runat="server" class="text-nav" href="~/Contact">Baño</a></li>
+                        <li><a class="text-nav" runat="server" href="~/Carrito">Carrito</a></li>
+                        <li><asp:Image CssClass="margen-top-icon" runat="server" ImageUrl="~/images/addCarroCompras.png" Height="25px" Width="25px" BackColor="Transparent"/></li>
+                        <li><asp:Label CssClass="margen-top-cant mr-1 ml-2 text-black" runat="server" ID="CantCarrito" Font-Bold="true" Width="15px" Height="15px" Font-Size="14px" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-inline" style="margin-top: 20px">
+                <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0 text-black-50" type="submit">Buscar</button>
+            </div>
+        </div>--%>
+        <div class="wrapper fixed-top ">
+            <!-- Sidebar  -->   
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>EN CASA</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <asp:Label runat="server" ID="nameAdmin"></asp:Label>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Articulos</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">Living</a>
+                            </li>
+                            <li>
+                                <a href="#">Dormitorio</a>
+                            </li>
+                            <li>
+                                <a href="#">Baño</a>
+                            </li>
+                            <li>
+                                <a href="#">Cocina</a>
+                            </li>
+                            <li>
+                                <a href="#">Cocina</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Proveedores</a>
+                    </li>
+                    <li>
+                        <a href="#">Marcas</a>
+                    </li>
+                    <li>
+                        <a href="#">Categorias</a>
+                    </li>
+                    <li>
+                        <a href="#">Usuarios</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div style="background-color: #EDFDFF;">
+                <div>
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <hr />
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                    </footer>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -4,3 +4,9 @@ D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.csproj
 D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.dll
 D:\UTN\Programacion 3\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.pdb
+D:\UTN\Programacion 3\TPC\TPC_QUINTANA\TPC_QUINTANA\Dominio\bin\Debug\Dominio.dll
+D:\UTN\Programacion 3\TPC\TPC_QUINTANA\TPC_QUINTANA\Dominio\bin\Debug\Dominio.pdb
+D:\UTN\Programacion 3\TPC\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+D:\UTN\Programacion 3\TPC\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+D:\UTN\Programacion 3\TPC\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.dll
+D:\UTN\Programacion 3\TPC\TPC_QUINTANA\TPC_QUINTANA\Dominio\obj\Debug\Dominio.pdb

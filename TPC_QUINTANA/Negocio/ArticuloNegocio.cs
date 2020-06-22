@@ -16,10 +16,7 @@ namespace Negocio
             Articulo articulo;
             try
             {
-                conexionDB.setearQuery("SELECT a.ID, A.CODIGO, a.NOMBRE, a.DESCRIPCION, a.EXISTENCIA, a.IMAGEN, a.PRECIO, a.CANTIDAD," +
-                    " m.NOMBRE as nombreMarca, m.ID as idMarca, c.NOMBRE as nombreCat, c.ID as idCat, p.NOMBRE as paisOrig, p.ID " +
-                    "as idOrig FROM Articulos as A INNER JOIN MARCAS as M on m.ID = a.IDMARCA INNER JOIN Categorias as C on " +
-                    "C.ID = a.IDCATEGORIA INNER JOIN PAISES AS P ON P.ID = A.IDORIGEN");
+                conexionDB.SetearSP("SP_LISTAR_ARTICULOS");
                 conexionDB.ejecutarLector();
                 while (conexionDB.lector.Read())
                 {
@@ -49,6 +46,33 @@ namespace Negocio
 
                 }
                 return listadoArticulo;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conexionDB.cerrarConexion();
+            }
+        }
+        public void Agregar(Articulo articuloNuevo)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_AGREGAR");
+                conexionDB.agregarParametro("@Codigo", articuloNuevo.cod);
+                conexionDB.agregarParametro("@Nombre", articuloNuevo.nombre);
+                conexionDB.agregarParametro("@Descripcion", articuloNuevo.descripcion);
+                conexionDB.agregarParametro("@IdCategoria", articuloNuevo.categoria.id.ToString());
+                conexionDB.agregarParametro("@IdMarca", articuloNuevo.marca.id.ToString());
+                conexionDB.agregarParametro("@IdProveedor", articuloNuevo.proveedor.cod.ToString());
+                conexionDB.agregarParametro("@Precio", articuloNuevo.precio);
+                conexionDB.agregarParametro("@Cantidad", articuloNuevo.cantidad);
+                conexionDB.agregarParametro("@IdOrigen", articuloNuevo.origen.id.ToString());
+                conexionDB.agregarParametro("@Imagen", articuloNuevo.imagen);
+                conexionDB.ejecutarAccion();
             }
             catch (Exception ex)
             {

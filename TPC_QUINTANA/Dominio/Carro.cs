@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Carrito
+    public class Carro
     {
         public List<Articulo> carro { get; set; }
         public int cantArt { get; set; }
-        public double precioTotal { get; set; }
+        public decimal precioTotal { get; set; }
+        public Carro()
+        {
+            carro = new List<Articulo>();
+            cantArt = 0;
+            precioTotal = 0;
+        }
     }
 }

@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
-    <Compile Include="Carrito.cs" />
+    <Compile Include="Carousel.cs" />
+    <Compile Include="Carro.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Fecha.cs" />
     <Compile Include="Persona.cs" />

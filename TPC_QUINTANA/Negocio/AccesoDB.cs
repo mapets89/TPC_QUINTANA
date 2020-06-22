@@ -14,7 +14,7 @@ namespace Negocio
         public SqlCommand comando { get; set; }
         public AccesoDB()
         {
-            conexion = new SqlConnection(@"Server=localhost,1433;Database=ENCASA;User Id=sa;Password=Admin1234");
+            conexion = new SqlConnection(@"Server=localhost,1433;Database=ENCASA;User Id=sa;Password=Admin011");
             comando = new SqlCommand();
             comando.Connection = conexion;
         }
@@ -50,6 +50,22 @@ namespace Negocio
         public void cerrarConexion()
         {
             conexion.Close();
+        }
+
+        public void SetearSP(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
+
+        internal void ejecutarAccion()
+        {
+            try
+            {
+                conexion.Open(); comando.ExecuteNonQuery();
+            }
+            catch (Exception ex) { throw ex; }
+            finally { conexion.Close(); }
         }
     }
 }

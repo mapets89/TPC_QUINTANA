@@ -13,5 +13,10 @@ namespace TPC_QUINTANA
         {
 
         }
+
+        protected void Botonpruebahome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm1.aspx");
+        }
     }
 }

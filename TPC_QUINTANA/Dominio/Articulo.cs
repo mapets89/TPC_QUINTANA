@@ -20,6 +20,13 @@ namespace Dominio
         public int existencia { get; set; }
         public Pais origen { get; set; }
         public string imagen { get; set; }
+        public Articulo()
+        {
+            categoria = new Categoria();
+            proveedor = new Proveedor();
+            marca = new Marca();
+            origen = new Pais();
+        }
 
     }
 }

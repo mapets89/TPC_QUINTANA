@@ -12,5 +12,12 @@ namespace Dominio
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string direccion { get; set; }
+        public Proveedor()
+        {
+            cod = 0;
+            nombre = "";
+            descripcion = "";
+            direccion = "";
+        }
     }
 }
