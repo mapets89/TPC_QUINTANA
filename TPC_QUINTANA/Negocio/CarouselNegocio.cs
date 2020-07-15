@@ -28,16 +28,19 @@ namespace Negocio
                     articulo.existencia = conexionDB.lector.GetInt32(4);
                     articulo.imagen = conexionDB.lector.GetString(5);
                     articulo.precio = Decimal.Round((decimal)conexionDB.lector["PRECIO"], 2);
-                    articulo.cantidad = conexionDB.lector.GetInt32(7);
+                    articulo.stock = conexionDB.lector.GetInt32(7);
                     articulo.marca = new Marca();
                     articulo.marca.nombre = (string)conexionDB.lector["nombreMarca"];
                     articulo.marca.id = conexionDB.lector.GetInt32(9);
                     articulo.categoria = new Categoria();
                     articulo.categoria.nombre = (string)conexionDB.lector["nombreCat"];
                     articulo.categoria.id = conexionDB.lector.GetInt32(11);
+                    articulo.seccion = new Seccion();
+                    articulo.seccion.id = conexionDB.lector.GetInt32(12);
+                    articulo.seccion.nombre = (string)conexionDB.lector["nombreSec"];
                     articulo.origen = new Pais();
                     articulo.origen.nombre = (string)conexionDB.lector["paisOrig"];
-                    articulo.origen.id = conexionDB.lector.GetInt32(13);
+                    articulo.origen.id = conexionDB.lector.GetInt32(15);
 
                     if (articulo.existencia != 0)
                     {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="principalAdmin.aspx.cs" Inherits="TPC_QUINTANA.principalAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="principalAdmin.aspx.cs" Inherits="TPC_QUINTANA.principalAdmin" EnableEventValidation="false" %>
 
 <asp:Content ID="PrincialContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>

@@ -46,8 +46,8 @@
             .icon {
                 margin-top: 0px;
                 margin-left: 0px;
-                width: 80px;
-                height: 38px;
+                width: 60px;
+                height: 25px;
                 background-color: transparent;
             }
 
@@ -71,7 +71,7 @@
 
             .text-logo {
                 font-family: Monoton;
-                font-size: 30px;
+                font-size: 25px;
                 margin-top: 15px;
             }
 
@@ -118,7 +118,7 @@
                 border-radius: 0;
                 margin-bottom: 40px;
                 box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-                width:100%;
+                width: 100%;
             }
 
             .navbar-btn {
@@ -143,7 +143,7 @@
                 width: 100%;
                 height: 100%;
                 align-items: stretch;
-                overflow:auto;
+                overflow: auto;
             }
 
             #sidebar {
@@ -260,78 +260,63 @@
                 }
             }
         </style>
-        <%-- <div class="navbar-expand-lg navbar navbar-light navbar-fixed-top" style="background-color: #DCFBFF;">
-            <div class="container">
-                <div class="navbar-header">
-                    <div class="navbar-header">
-                        <a class="navbar-brand">
-                            <asp:Image CssClass="icon" runat="server" ImageUrl="~/images/ic_logo.png" />
-                        </a>
-                    </div>
-                    <a class="navbar-brand text-logo" runat="server" href="home">EN CASA</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" class="text-nav" href="~/">Living</a></li>
-                        <li><a runat="server" class="text-nav" href="~/Dormitorio">Dormitorio</a></li>
-                        <li><a runat="server" class="text-nav" href="~/Contact">Cocina</a></li>
-                        <li><a runat="server" class="text-nav" href="~/Contact">Baño</a></li>
-                        <li><a class="text-nav" runat="server" href="~/Carrito">Carrito</a></li>
-                        <li><asp:Image CssClass="margen-top-icon" runat="server" ImageUrl="~/images/addCarroCompras.png" Height="25px" Width="25px" BackColor="Transparent"/></li>
-                        <li><asp:Label CssClass="margen-top-cant mr-1 ml-2 text-black" runat="server" ID="CantCarrito" Font-Bold="true" Width="15px" Height="15px" Font-Size="14px" /></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="form-inline" style="margin-top: 20px">
-                <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0 text-black-50" type="submit">Buscar</button>
-            </div>
-        </div>--%>
         <div class="wrapper fixed-top ">
-            <!-- Sidebar  -->   
+            <!-- Sidebar  -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3>EN CASA</h3>
+                    <div class="nav-tabs">
+                        <div>
+                            <a>
+                                <asp:Image CssClass="icon" runat="server" ImageUrl="~/images/ic_logo.png" />
+                            </a>
+                        </div>
+                        <label class="navbar-brand text-logo" runat="server" style="margin-bottom: 10px;">EN CASA</label>
+                    </div>
+                    <div class=" sidebar-header">
+                        <asp:Label runat="server" ID="nameAdmin" style="font-family:Federicka; font-size:25px"></asp:Label>
+                    </div>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <asp:Label runat="server" ID="nameAdmin"></asp:Label>
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Articulos</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="#">Living</a>
+                                <a href="livingadmin.aspx">Living</a>
                             </li>
                             <li>
-                                <a href="#">Dormitorio</a>
+                                <a href="DormitorioAdmin.aspx">Dormitorio</a>
                             </li>
                             <li>
-                                <a href="#">Baño</a>
+                                <a href="bañoadmin">Baño</a>
                             </li>
                             <li>
-                                <a href="#">Cocina</a>
-                            </li>
-                            <li>
-                                <a href="#">Cocina</a>
-                            </li>
+                                <a href="cocinaadmin.aspx">Cocina</a>
+                            </li>  
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Proveedores</a>
+                        <a href="ventas.aspx">Ventas</a>
                     </li>
                     <li>
-                        <a href="#">Marcas</a>
+                        <a href="proveedoresList.aspx">Proveedores</a>
                     </li>
                     <li>
-                        <a href="#">Categorias</a>
+                        <a href="marcas.aspx">Marcas</a>
                     </li>
                     <li>
-                        <a href="#">Usuarios</a>
+                        <a href="categorias.aspx">Categorias</a>
+                    </li>
+                    <li>
+                        <a href="usuariosadmin.aspx">Usuarios</a>
+                    </li>
+                    <li>
+                        <asp:button runat="server" ID="salir" Text="Salir" type="link" style="margin-top:10px; font-size:15px; border-color:transparent; background-color:transparent; width:auto; margin-left:3px;" OnClick="salir_Click"></asp:button>
                     </li>
                 </ul>
             </nav>
 
-            <div style="background-color: #EDFDFF;">
+            <div style="background-color: #EDFDFF; width: 100%;">
                 <div>
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>

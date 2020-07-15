@@ -32,5 +32,4 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <asp:Button runat="server" ID="botonpruebahome" OnClick="Botonpruebahome_Click" />
 </asp:Content>

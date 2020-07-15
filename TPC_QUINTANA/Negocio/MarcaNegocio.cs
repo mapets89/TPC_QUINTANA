@@ -35,6 +35,50 @@ namespace Negocio
             {
                 conexionDB.cerrarConexion();
             }
+            
+        }
+        public void AgregarMarca(string nombre)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_AGREGAR_MARCA");
+                conexionDB.agregarParametro("@Nombre", nombre);
+                conexionDB.ejecutarAccion();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+        public void Eliminar(Marca marca)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_ELIMINAR_MARCA");
+                conexionDB.agregarParametro("@ID", marca.id);
+                conexionDB.agregarParametro("@Existencia", marca.existencia);
+                conexionDB.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void Modificar(Marca marca)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_MODIFICAR_MARCA");
+                conexionDB.agregarParametro("@ID", marca.id);
+                conexionDB.agregarParametro("@Nombre", marca.nombre);
+                conexionDB.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

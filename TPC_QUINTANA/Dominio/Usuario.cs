@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Usuario
+   public class Usuario : Persona
     {
+        public int id { get; set; }
         public string email { get; set; }
+        public string userName { get; set; }
         public string password { get; set; }
         public int privilegio { get; set; }
-        public Fecha fechaAlta { get; set; }
+        public int existe { get; set; }
+        public Usuario()
+        {
+            id = 0;
+            email = "";
+            userName = "";
+            password = "";
+            privilegio = 1;
+            existe = 1;
+        }
     }
 }

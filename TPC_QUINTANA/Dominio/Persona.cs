@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Persona
+    public class Persona
     {
         public string nombre { get; set; }
         public string apellido { get; set; }
-        public string dni { get; set; }
-        public Fecha fechaNac { get; set; }
-        public string direccion { get; set; }
+        public int dni { get; set; }
+        public Direccion direccion { get; set; }
+        public Persona()
+        {
+            nombre = "";
+            apellido = "";
+            dni = 0;
+            direccion = new Direccion();
+        }
     }
 }

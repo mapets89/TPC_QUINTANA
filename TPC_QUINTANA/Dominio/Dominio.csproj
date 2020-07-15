@@ -45,13 +45,17 @@
     <Compile Include="Carousel.cs" />
     <Compile Include="Carro.cs" />
     <Compile Include="Categoria.cs" />
-    <Compile Include="Fecha.cs" />
+    <Compile Include="Direccion.cs" />
+    <Compile Include="ListaVentas.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <Compile Include="Seccion.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="Ventacs.cs" />
+    <Compile Include="VentaxUsuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

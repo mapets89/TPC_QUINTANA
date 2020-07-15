@@ -50,6 +50,10 @@
                 text-align:center;
                 font-family:Henny;
             }
+            .botonCompra{
+                width: auto;
+                right:0;
+            }
             @font-face {
                 font-family: 'Cinzel';
                 src: url(fonts/CinzelDecorative-Bold.ttf);
@@ -81,6 +85,7 @@
             </Columns>
         </asp:GridView>
         <asp:Label CssClass="precioTotal btn-info" ID="totalLabel" runat="server"></asp:Label>
+        <asp:Button runat="server" ID="comprar" Text="Comprar" Cssclass="btn btn-primary btn-lg btn-block botonCompra" OnClick="comprar_Click"></asp:Button>
         <asp:Label CssClass="" ID="sinItemLabel" runat="server"></asp:Label>
     </div>
 </asp:Content>

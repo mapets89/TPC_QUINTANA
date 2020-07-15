@@ -11,13 +11,15 @@ namespace Dominio
         public int cod { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public string direccion { get; set; }
+        public Direccion direccion { get; set; }
+        public int existencia { get; set; }
         public Proveedor()
         {
             cod = 0;
             nombre = "";
             descripcion = "";
-            direccion = "";
+            existencia = 1;
+            direccion = new Direccion();
         }
     }
 }

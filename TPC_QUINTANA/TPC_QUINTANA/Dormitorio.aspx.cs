@@ -12,6 +12,7 @@ namespace TPC_QUINTANA
     public partial class Dormitorio : System.Web.UI.Page
     {
         public List<Articulo>DormitorioList { get; set; }
+        public List<Articulo> ListaFiltrada = new List<Articulo>();
         protected Carousel carousel = new Carousel();
         protected CarouselNegocio carouselNegocio = new CarouselNegocio();
         protected ArticuloNegocio negocio = new ArticuloNegocio();
@@ -20,7 +21,7 @@ namespace TPC_QUINTANA
             try
             {
                 carousel.carousel = carouselNegocio.cargarCarousel();
-                DormitorioList = negocio.ListarArticulos();
+                DormitorioList = negocio.ListarDormitorio();
                 if (!IsPostBack)
                 {
                     imageCarousel1.ImageUrl = carousel.carousel[0].imagen;
@@ -37,10 +38,21 @@ namespace TPC_QUINTANA
                     precioCarousel3.Text = carousel.carousel[2].precio.ToString();
                     Repeater.DataSource = DormitorioList;
                     Repeater.DataBind();
+                    
                 }
                 else
                 {
-                    Repeater.DataBind();
+                    if (Session[Session.SessionID + "busqueda"] != null)
+                    {
+                        string busqueda = (string)Session[Session.SessionID + "busqueda"];
+                        ListaFiltrada = DormitorioList.FindAll(A => A.nombre.ToLower().Contains(busqueda.ToLower()));
+                        Repeater.DataSource = ListaFiltrada;
+                        Repeater.DataBind();
+                    }
+                    else
+                    {
+                        Repeater.DataBind();
+                    }
                 }
 
             }
@@ -60,18 +72,25 @@ namespace TPC_QUINTANA
             {
                 var articuloSelec = Convert.ToInt32(((Button)sender).CommandArgument);
                 articulo = DormitorioList.Find(J => J.id == articuloSelec);
-                if (Session[Session.SessionID + "articulo"] != null)
+                if (articulo.enStock != "Producto sin Stock")
                 {
-                    carro = (Carro)Session[Session.SessionID + "articulo"];
+                    if (Session[Session.SessionID + "articulo"] != null)
+                    {
+                        carro = (Carro)Session[Session.SessionID + "articulo"];
+                    }
+                    if (!carro.carro.Exists(A => A.id == articulo.id))
+                    {
+                        carro.carro.Add(articulo);
+                        carro.cantArt++;
+                        carro.precioTotal += articulo.precio;
+                        Session.Add(Session.SessionID + "articulo", carro);
+                    }
+                    Response.Redirect("Dormitorio.aspx");
                 }
-                if (!carro.carro.Exists(A => A.id == articulo.id))
+                else
                 {
-                    carro.carro.Add(articulo);
-                    carro.cantArt++;
-                    carro.precioTotal += articulo.precio;
-                    Session.Add(Session.SessionID + "articulo", carro);
+                    Response.Redirect("Dormitorio.aspx");
                 }
-                Response.Redirect("Dormitorio.aspx");
             }
             catch (Exception ex)
             {

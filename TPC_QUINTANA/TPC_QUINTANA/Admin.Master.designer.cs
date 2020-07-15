@@ -24,6 +24,15 @@ namespace TPC_QUINTANA
         protected global::System.Web.UI.WebControls.Label nameAdmin;
 
         /// <summary>
+        /// Control salir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button salir;
+
+        /// <summary>
         /// Control MainContent.
         /// </summary>
         /// <remarks>

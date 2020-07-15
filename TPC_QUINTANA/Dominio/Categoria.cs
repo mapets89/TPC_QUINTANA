@@ -10,6 +10,7 @@ namespace Dominio
     {
         public int id { get; set; }
         public string nombre { get; set; }
+        public int existencia { get; set; }
         public Categoria()
         {
             id = 0;

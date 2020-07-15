@@ -119,22 +119,23 @@
 
         <asp:Repeater runat="server" ID="Repeater">
             <ItemTemplate>
-                <div class="card mb-4" style="max-width: 540px;">
+                <div class="card mb-4" style="max-width: 540px; max-height: 100px;">
                     <div class="row">
                         <div class="col-md-4">
                             <img src="<%#Eval("imagen")%>" class="card-img cardCustom" alt="...">
                         </div>
                         <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><%#Eval("nombre")%></h5>
-                                <p class="card-text"><%#Eval("descripcion")%></p>
-                                <p class="card-text"><small class="text-muted">$ <%#Eval("precio")%></small></p>
+                            <div class="card-body mt-0">
+                                <h5 class="card-title mt-0" style="position:absolute"><%#Eval("nombre")%></h5>
+                                <p class="card-text" style="position:absolute; margin-top:15px;" ><%#Eval("descripcion")%></p>
+                                <p class="card-text" style="position:absolute; margin-top:35px;"><small class="text-muted">$ <%#Eval("precio")%></small></p>
+                                <p class="card-text" style="font-size:20px; position:absolute; margin-top:50px;"><small class="text-muted"><%#Eval("enStock")%></small></p>
                             </div>
                         </div>
                     </div>
-                </div>
                 <div class="mt-0">
-                    <asp:Button CssClass="btn btn-toolbar boton-add" ID="addCarrito" Text="Añadir al Carrito" runat="server" CommandArgument='<%#Eval("Id")%>' OnCommand="addCarrito_Command" />
+                    <asp:Button runat="server" CssClass="btn btn-primary boton-add" ID="addCarrito" Text="Añadir al Carrito" CommandName='<%#Eval("stock")%>' CommandArgument='<%#Eval("Id")%>' OnCommand="addCarrito_Command" />
+                </div>
                 </div>
             </ItemTemplate>
         </asp:Repeater>

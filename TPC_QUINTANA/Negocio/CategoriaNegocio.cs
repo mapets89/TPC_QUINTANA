@@ -37,5 +37,48 @@ namespace Negocio
                 conexionDB.cerrarConexion();
             }
         }
+        public void Agregar(string nombre)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_AGREGAR_CATEGORIA");
+                conexionDB.agregarParametro("@Nombre", nombre);
+                conexionDB.ejecutarAccion();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+        public void Eliminar(Categoria categoria)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_ELIMINAR_CATEGORIA");
+                conexionDB.agregarParametro("@ID", categoria.id);
+                conexionDB.agregarParametro("@Existencia", categoria.existencia);
+                conexionDB.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void Modificar(Categoria categoria)
+        {
+            try
+            {
+                conexionDB.SetearSP("SP_MODIFICAR_CATEGORIA");
+                conexionDB.agregarParametro("@ID", categoria.id);
+                conexionDB.agregarParametro("@Nombre", categoria.nombre);
+                conexionDB.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
